@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Paniz</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1c2d">
+
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      margin: 0;
+      background: #0b1c2d;
+      color: #f2e6c9;
+      font-family: "Georgia", serif;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 420px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    img.cover {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    button {
+      margin: 18px 0;
+      padding: 14px 26px;
+      font-size: 18px;
+      border-radius: 40px;
+      border: none;
+      background: #f2e6c9;
+      color: #0b1c2d;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    .poem {
+      margin-top: 24px;
+      font-size: 15px;
+      line-height: 1.6;
+      text-align: left;
+      opacity: 0.95;
+    }
+
+    .poem p {
+      margin: 0 0 10px 0;
+    }
+
+    .fr {
+      opacity: 0.8;
+      font-style: italic;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 13px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <img src="cover.jpg" alt="Paniz cover" class="cover">
+
+    <button id="playBtn">▶ Play</button>
+
+    <audio id="audio" src="paniz.mp3"></audio>
+
+    <div class="poem">
+      <p>Look, it's freezing before my eyes</p>
+      <p class="fr">Regarde il gèle là sous mes yeux</p>
+
+      <p>Stalactites dream too old</p>
+      <p class="fr">Des stalactites rêvent trop vieux</p>
+
+      <p>All his promises that evaporate</p>
+      <p class="fr">Toutes ses promesses qui s'évaporent</p>
+
+      <p>Towards other skies towards other ports</p>
+      <p class="fr">Vers d'autre ciel vers d'autres ports</p>
+
+      <p>And my dreams cling to your knuckles</p>
+      <p class="fr">Et mes rêves s'accrochent à tes phalanges</p>
+
+      <p>I love you too much, it bothers you</p>
+      <p class="fr">Je t'aime trop fort ça te dérange</p>
+
+      <p>And my dreams shatter on your knuckles</p>
+      <p class="fr">Et mes rêves se brisent sur tes phalanges</p>
+
+      <p>I love you too much</p>
+      <p class="fr">Je t'aime trop fort</p>
+
+      <p>My angel my angel</p>
+      <p class="fr">Mon ange mon ange</p>
+    </div>
+
+    <footer>
+      composed by Omid Beheshti
+    </footer>
+
+  </div>
+
+  <script>
+    const audio = document.getElementById("audio");
+    const btn = document.getElementById("playBtn");
+
+    btn.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        btn.textContent = "⏸ Pause";
+      } else {
+        audio.pause();
+        btn.textContent = "▶ Play";
+      }
+    });
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
